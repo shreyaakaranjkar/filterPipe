@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+    <input type="text" class="form-control mb-4" [(ngModel)]="searchValue" placeholder="search here">
+    </div>
+    <div class="col-md-4">
+      <select name="" id="" class="form-control" (change)="onSelect(eleref)" #eleref >
+        <option value="filter By">filter By</option>
+        <option value="name">Name</option>
+        <option value="team">Team</option>
+        <option value="odiRuns">OdiaRun</option>
+        <option value="testRuns">testRuns</option>
+        <option value="yearDebut">yearDebut</option>
+      </select>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr.No</th>
+          <th>Name</th>
+          <th>Team</th>
+          <th>Odia Run</th>
+          <th>Test Run</th>
+          <th>year Debut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players | filterPipe : searchValue : selectValue ; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{player.name}}</td>
+          <td>{{player.team}}</td>
+          <td>{{player.odiRuns}}</td>
+          <td>{{player.testRuns}}</td>
+          <td>{{player.yearDebut}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
